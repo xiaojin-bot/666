@@ -52,12 +52,17 @@ button {
 .phone-screen {
   position: relative;
   min-height: min(820px, calc(100vh - 72px));
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
   border-radius: 31px;
   padding: 13px 18px 86px;
   background:
     linear-gradient(180deg, rgba(255, 250, 238, 0.98), rgba(247, 238, 222, 0.98)),
     #fbf4e7;
+}
+
+.phone-screen::-webkit-scrollbar {
+  display: none;
 }
 
 .status-bar {
@@ -324,6 +329,234 @@ h1 {
 
 .add-form button:active {
   transform: translateY(1px);
+}
+
+.hero-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.streak-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 999px;
+  padding: 6px 12px;
+  color: #2c241f;
+  background: rgba(255, 249, 238, 0.82);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.hero-metrics .hero-pill,
+.hero-metrics .streak-pill {
+  margin-top: 0;
+}
+
+.view-content {
+  min-height: 360px;
+}
+
+.habit-section,
+.calendar-section,
+.todo-section,
+.profile-section {
+  min-height: 280px;
+}
+
+.compact-list .habit-item {
+  grid-template-columns: 40px 38px minmax(0, 1fr);
+}
+
+.date-strip {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 48px;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px 1px 12px;
+  scrollbar-width: none;
+}
+
+.date-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.date-strip button {
+  min-height: 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid rgba(70, 58, 51, 0.08);
+  border-radius: 8px;
+  color: #8b7b6b;
+  background: rgba(255, 253, 248, 0.82);
+  box-shadow: 0 8px 18px rgba(92, 71, 57, 0.07);
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.date-strip button span {
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.date-strip button strong {
+  color: #2a241f;
+  font-size: 1rem;
+}
+
+.date-strip button.has-record::after {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7a6cff;
+  content: "";
+}
+
+.date-strip button.is-selected {
+  border-color: rgba(31, 27, 24, 0.42);
+  color: #1f1b18;
+  background: #f0e3d1;
+}
+
+.selected-date-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid rgba(70, 58, 51, 0.08);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 12px;
+  background: rgba(255, 253, 248, 0.92);
+  box-shadow: 0 10px 22px rgba(92, 71, 57, 0.09);
+}
+
+.selected-date-card p {
+  margin: 0;
+  color: #857463;
+  font-size: 0.86rem;
+  font-weight: 750;
+}
+
+.selected-date-card strong {
+  color: #241f1b;
+  font-size: 0.9rem;
+}
+
+.todo-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+.todo-form input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid rgba(94, 80, 69, 0.13);
+  border-radius: 8px;
+  padding: 0 14px;
+  color: #24201c;
+  background: rgba(255, 252, 246, 0.92);
+  outline: none;
+}
+
+.todo-form input:focus {
+  border-color: rgba(38, 33, 29, 0.55);
+  box-shadow: 0 0 0 4px rgba(218, 186, 162, 0.28);
+}
+
+.todo-form button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff8ef;
+  background: #1d1916;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.todo-list {
+  display: grid;
+  gap: 10px;
+}
+
+.todo-item {
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 38px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(70, 58, 51, 0.08);
+  border-radius: 8px;
+  padding: 10px;
+  background: rgba(255, 253, 248, 0.95);
+  box-shadow: 0 10px 22px rgba(92, 71, 57, 0.09);
+}
+
+.todo-item.is-completed {
+  border-color: rgba(123, 123, 123, 0.16);
+  background: #f0efec;
+}
+
+.todo-content {
+  min-width: 0;
+}
+
+.todo-content p {
+  margin: 5px 0 0;
+  color: #9a8978;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.todo-item.is-completed .habit-name-input {
+  color: #85817b;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.summary-grid div {
+  min-height: 92px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(70, 58, 51, 0.08);
+  border-radius: 8px;
+  padding: 14px;
+  background: rgba(255, 253, 248, 0.95);
+  box-shadow: 0 10px 22px rgba(92, 71, 57, 0.09);
+}
+
+.summary-grid span {
+  color: #8b7b6b;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.summary-grid strong {
+  color: #211e1a;
+  font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+  font-size: 1.55rem;
+  font-weight: 500;
 }
 
 .habit-section {
@@ -594,6 +827,10 @@ h1 {
     grid-template-columns: 38px 34px minmax(0, 1fr) 34px;
     gap: 7px;
     padding: 9px;
+  }
+
+  .compact-list .habit-item {
+    grid-template-columns: 38px 34px minmax(0, 1fr);
   }
 
   .check-button,
